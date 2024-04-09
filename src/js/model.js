@@ -45,7 +45,7 @@ export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
-    console.log(data);
+    // console.log(data);
     state.search.results = data.data.recipes.map(rec => {
       return {
         id: rec.id,
@@ -72,7 +72,7 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
 export const updateServings = function (newServings) {
   //  state.recipe.ingredients
-  console.log(state.recipe.ingredients);
+  // console.log(state.recipe.ingredients);
   state.recipe.ingredients.forEach(ing => {
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
     // newQt = oldQt * newServings / oldServings // 2* 8/4 = 4
@@ -110,7 +110,7 @@ const init = function () {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
-console.log(state.bookmarks);
+// console.log(state.bookmarks);
 
 const clearBookmarks = function () {
   localStorage.clear('bookmarks');

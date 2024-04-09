@@ -2,7 +2,7 @@
 import View from './View';
 
 import icons from 'url:../../img/icons.svg'; // Parcel 2
-import { Fraction } from 'fractional';
+import { numberToFraction } from '../helpers.js';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -18,7 +18,7 @@ class RecipeView extends View {
       addEventListener('click', function (e) {
         const btn = e.target.closest('.btn--tiny');
         if (!btn) return;
-        console.log(btn);
+        // console.log(btn);
         const { updateTo } = btn.dataset;
         if (+updateTo > 0) handler(+updateTo);
       });
@@ -131,7 +131,7 @@ class RecipeView extends View {
       <use href="${icons}icons.svg#icon-check"></use>
     </svg>
     <div class="recipe__quantity">${
-      ing.quantity ? new Fraction(ing.quantity).toString() : ''
+      ing.quantity ? numberToFraction(ing.quantity).toString() : ''
     }</div>
     <div class="recipe__description">
       <span class="recipe__unit">${ing.unit}</span>
